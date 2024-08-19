@@ -55,15 +55,25 @@ def init_db() -> None:
 
 
 def main() -> None:
+
+    args: dict = sys.argv
+    if (len(args) > 1) and (args[1].lower() == "debug"):
+        print("RUNNING IN DEBUG MODE")
+        debug_flag = True
+    else:
+        debug_flag = False
+
     init_db()
 
     while True:
         try:
-            term_columns, term_len = os.get_terminal_size()
-
             logger = Logger()
             logger.collect_data()
-            logger.print_data(term_columns)
+
+            if debug_flag:
+                term_columns, _ = os.get_terminal_size()
+                logger.print_data(term_columns)
+
             logger.log_data()
             time.sleep(30)
 
