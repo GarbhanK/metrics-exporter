@@ -13,3 +13,8 @@ rasperry pi metrics exporter
 select * from cpu;
 ```
 
+## TODOs
+- export to cloud DB service instead of save locally
+- export more metrics e.g `psutil.net_io_counters()`
+- set up terraform for managing cloud resources
+
