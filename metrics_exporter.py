@@ -19,7 +19,7 @@ class Logger:
 
     def print_data(self, term_columns):
         print("-" * term_columns)
-        print(self.data_dict['cpu'])
+        print(f"UNIX Timestamp: {self.data_dict['cpu'][0]}")
         print("CPU TIME // User: {1:,.0f}, System: {3:,.0f}, Idle: {4:,.0f}".format(
             *self.data_dict['cpu'])
         )
@@ -65,12 +65,12 @@ def main() -> None:
             logger.collect_data()
             logger.print_data(term_columns)
             logger.log_data()
-            time.sleep(3)
+            time.sleep(30)
 
         except KeyboardInterrupt:
             print("Exiting manually...")
             sys.exit()
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     main()
 
