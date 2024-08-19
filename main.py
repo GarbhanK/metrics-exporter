@@ -1,13 +1,12 @@
 import os
 import sys
-# from datetime import datetime
-
 import time
 
 import psutil as ps
 import sqlite3
 
 DB_FILENAME = "system_metrics.db"
+
 
 class Logger:
     def __init__(self):
@@ -43,7 +42,7 @@ class Logger:
         conn.close()
 
 
-def init_db():
+def init_db() -> None:
     conn = sqlite3.connect(DB_FILENAME)
     c = conn.cursor()
 
@@ -55,8 +54,7 @@ def init_db():
     conn.close()
 
 
-def main():
-
+def main() -> None:
     init_db()
 
     while True:
@@ -73,5 +71,6 @@ def main():
             print("Exiting manually...")
             sys.exit()
 
-main()
+if __name__ = "__main__":
+    main()
 
